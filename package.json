@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "antd": "^5.20.6",
-    "i18next": "^23.15.1",
+    "antd": "^5.24.5",
+    "i18next": "^23.16.8",
+    "i18next-resources-to-backend": "^1.2.1",
     "next": "14.2.12",
+    "next-i18n-router": "^5.5.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-i18next": "^15.4.1",
+    "react-select": "^5.10.1",
     "redux-toolkit": "^1.1.2"
   },
   "devDependencies": {

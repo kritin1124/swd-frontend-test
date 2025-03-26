@@ -1,0 +1,276 @@
+.page-layout {
+  background: linear-gradient(to right, #6EDA78, #FFA200);
+
+}
+.page-title{
+  margin-left: 10px;
+}
+
+.button-row {
+  width: 100%;
+
+}
+
+#swap-button {
+  width: 100%;
+}
+
+.page-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.control-button {
+  width: 70%;
+  height: 150px;
+  background-color: white
+}
+
+.control-button:hover {
+  background-color: #FFA200 !important;
+  box-shadow: none;
+  border: none;
+
+
+}
+
+.control-button:hover .triangle-left,
+.control-button:hover .triangle-up,
+.control-button:hover .triangle-down,
+.control-button:hover .triangle-right {
+  background-color: white;
+  box-shadow: none;
+  border: none;
+
+}
+
+
+.move-text {
+  background-color: #6EDA78;
+  position: absolute;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: white;
+  font-weight: 600;
+  top: 100%;
+  transform: translate(0, -50%);
+}
+
+
+
+.move-icon {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.swap-item{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 150px;
+
+}
+.triangle-up {
+  width: 100px;
+  aspect-ratio: 1/cos(30deg);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  background-color: gray;
+}
+
+.triangle-down {
+  width: 100px;
+  aspect-ratio: 1/cos(30deg);
+  clip-path: polygon(50% 100%, 100% 0, 0 0);
+  background-color: gray;
+
+}
+
+.triangle-left {
+
+  height: 100px;
+  aspect-ratio: cos(30deg);
+  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+  background-color: gray;
+
+}
+
+.triangle-right {
+  height: 100px;
+  aspect-ratio: cos(30deg);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  background-color: gray;
+}
+
+
+.shape-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 5px;
+}
+
+
+.card-container {
+  background-color: #ffffff !important;
+  border-radius: 10px;
+  width: 220px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container:hover {
+  background-color: #FFA200 !important;
+  box-shadow: none;
+  border: none;
+  .shape {
+    background-color: white !important;
+  }
+}
+
+.shape {
+  background-color: gray;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-weight: bold;
+
+}
+.shape-grid-container{
+  padding: 20px;
+  border-top: rgb(88, 88, 88) solid 1px;
+}
+
+.rectangle {
+  width: 200px;
+  height: 100px;
+}
+
+.square {
+  width: 120px;
+  height: 120px;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+}
+
+.oval {
+  width: 180px;
+  height: 90px;
+  border-radius: 90px / 45px;
+}
+
+.trapezoid {
+  width: 180px;
+  height: 90px;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0 100%);
+}
+
+.parallelogram {
+  width: 180px;
+  height: 120px;
+  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0 100%);
+}
+
+@media screen and (max-width: 1024px) {
+  .page-layout {
+    padding: 10px;
+  }
+
+  .control-button {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .shape-grid {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .card-container {
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+  }
+
+  .shape {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .rectangle { width: 100px; height: 50px; }
+  .square { width: 80px; height: 80px; }
+  .circle { width: 80px; height: 80px; }
+  .oval { width: 100px; height: 50px; }
+  .trapezoid { width: 100px; height: 50px; }
+  .parallelogram { width: 100px; height: 60px; }
+}
+@media  screen and (max-width: 840px) {
+  .swap-item{
+    
+    gap: 100px;
+  
+  }
+  
+}
+@media screen and (max-width: 768px) {
+  .card-container {
+    width: 150px;
+
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  .card-container {
+    width: 100%;
+  }
+  .swap-item{
+    
+    gap: 50px;
+  
+  }
+  .shape {
+    max-width: 80px;
+    max-height: 80px;
+  }
+  .triangle-left {
+    width: 40px;
+    height: 40px;
+  }
+  .triangle-right {
+    width: 40px;
+    height: 40px;
+  }
+  .triangle-up {
+    width: 40px;
+    height: 40px;
+  }.triangle-down {
+    width: 40px;
+    height: 40px;
+  }
+  .rectangle { width: 80px; height: 40px; }
+  .square { width: 60px; height: 60px; }
+  .circle { width: 60px; height: 60px; }
+  .oval { width: 80px; height: 40px; }
+  .trapezoid { width: 80px; height: 40px; }
+  .parallelogram { width: 80px; height: 50px; }
+}
