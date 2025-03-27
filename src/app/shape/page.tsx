@@ -56,7 +56,7 @@ const PageLayout: React.FC = () => {
 
         isLoaing ? (
             <div className="page-layout">
-            <h1 className="page-title">{t("title1")}</h1>
+            <h1 className="page-title">{t("layout.title1")}</h1>
             <Col span={24} className='page-menu' >
                 <Row gutter={[20, 12]} className="button-row" justify="center" align="middle">
                     <Col span={6} style={{ display: "flex", justifyContent: "end", alignItems: "center" }}>

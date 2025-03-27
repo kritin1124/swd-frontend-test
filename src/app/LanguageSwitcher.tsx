@@ -19,8 +19,8 @@ const LanguageSwitcher: React.FC = () => {
   }, []);
 
   const languageOptions: LanguageOption[] = [
-    { value: "en", label: t("EN") },
-    { value: "th", label: t("TH") }
+    { value: "en", label: t("layout.EN") },
+    { value: "th", label: t("layout.TH") }
   ];
 
   const customStyles: StylesConfig<LanguageOption, false> = {
