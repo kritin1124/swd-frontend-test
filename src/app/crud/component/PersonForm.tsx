@@ -25,11 +25,12 @@ const PersonalInfoForm: React.FC = () => {
             form.resetFields();
         }
     }, [selectedPerson]);
+    
 
     const onFinish = (values: Pick<PersonalInfo, "title" | "firstName" | "lastName" | "birthday" | "nationality" | "citizenId" | "gender" | "mobilePhone" | "passportNo" | "expectedSalary">) => {
         const updatedValues = {
             ...values, birthday: dayjs.isDayjs(values.birthday)
-                ? values.birthday.format("YYYY-MM-DD") 
+                ? values.birthday.format("YYYY-MM-DD")
                 : values.birthday,
         };
 
@@ -69,7 +70,8 @@ const PersonalInfoForm: React.FC = () => {
                     <Form.Item
                         label={t("crud.titleName")}
                         name="title"
-                        rules={[{ required: true, message: "Please select title" }]}
+                        
+                        rules={[{ required: true, message: t("crud.err_title") }]}
                     >
 
                         <Select placeholder={t("crud.titleName")}>
@@ -84,18 +86,18 @@ const PersonalInfoForm: React.FC = () => {
                         label={t("crud.firstName")}
                         name="firstName"
                         style={{ width: '35%' }}
-                        rules={[{ required: true, message: "Please enter first name" }]}
+                        rules={[{ required: true, message: t("crud.err_firstname") }]}
                     >
-                        <Input id="firstName"/>
+                        <Input id="firstName" />
                     </Form.Item>
 
                     <Form.Item
                         label={t("crud.lastName")}
                         name="lastName"
                         style={{ width: '35%' }}
-                        rules={[{ required: true, message: "Please enter last name" }]}
+                        rules={[{ required: true, message: t("crud.err_lastname") }]}
                     >
-                        <Input id="lastName"/>
+                        <Input id="lastName" />
                     </Form.Item>
                 </div>
 
@@ -103,7 +105,7 @@ const PersonalInfoForm: React.FC = () => {
                     <Form.Item
                         label={t("crud.birthday")}
                         name="birthday"
-                        rules={[{ required: true, message: "Please select birthday" }]}
+                        rules={[{ required: true, message: t("crud.err_birthday") }]}
                     >
                         <DatePicker
 
@@ -115,7 +117,7 @@ const PersonalInfoForm: React.FC = () => {
                     <Form.Item
                         label={t("crud.nationality")}
                         name="nationality"
-                        rules={[{ required: true, message: "Please select nationality" }]}
+                        rules={[{ required: true, message: t("crud.err_nationality") }]}
                         style={{ width: '50%' }}
                     >
                         <Select placeholder={t("crud.select")} >
@@ -145,7 +147,7 @@ const PersonalInfoForm: React.FC = () => {
                     label={t("crud.gender")}
                     name="gender"
                     style={{ marginBottom: '10px' }}
-                    required={true}
+                    rules={[{ required: true, message: t("crud.err_gender") }]}
                 >
                     <Radio.Group>
                         <Radio value="Male">{t("crud.male")}</Radio>
@@ -154,24 +156,25 @@ const PersonalInfoForm: React.FC = () => {
                     </Radio.Group>
                 </Form.Item>
 
-                <Form.Item label={t("crud.mobilePhone")} name="mobilePhone" required={true}>
-                    <Input id = "mobilePhone" style={{ width: "60%" }} />
+                <Form.Item label={t("crud.mobilePhone")} name="mobilePhone" rules={[{ required: true, message: t("crud.err_mobilephone") }]}>
+                    <Input id="mobilePhone" style={{ width: "60%" }} />
                 </Form.Item>
 
                 <Form.Item
                     label={t("crud.passportNo")}
                     name="passportNo"
                     style={{ width: '50%' }}
+
                 >
-                    <Input  id="passportNo"/>
+                    <Input id="passportNo" />
                 </Form.Item>
 
                 <Row gutter={[16, 16]}>
                     <Col span={12}>
                         <Form.Item
-                            required={true}
+                            rules={[{ required: true, message: t("crud.err_expectedSalary") }]}
                             label={t("crud.expectedSalary")} name="expectedSalary">
-                            <Input  id="expectedSalary"/>
+                            <Input id="expectedSalary" />
                         </Form.Item>
                     </Col>
                     <Col span={8} offset={4}  >

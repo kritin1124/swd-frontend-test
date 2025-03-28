@@ -64,7 +64,17 @@
     "female": "Female",
     "unsex": "Unisex",
     "expectedSalary": "Expected Salary",
-    "passportNo": "Passport No."
+    "passportNo": "Passport No.",
+    "err_title": "Please select title",
+    "err_firstname": "Please enter first name",
+    "err_lastname": "Please enter last name",
+    "err_mobilephone": "Please enter mobile phone",
+    "err_email": "Please enter email",
+    "err_address": "Please enter address",
+    "err_birthday": "Please enter birthday",
+    "err_gender": "Please enter gender",
+    "err_expectedSalary": "Please enter expected salary",
+    "err_nationality": "Please enter nationality"
   },
   "table": {
     "name": "Name",
@@ -75,6 +85,7 @@
     "selectAll":"Select All",
     "delete": "DELETE",
     "edit":"EDIT"
+    
   }
 
 }
