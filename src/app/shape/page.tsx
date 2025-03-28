@@ -62,7 +62,7 @@ const PageLayout: React.FC = () => {
                     <Col span={6} style={{ display: "flex", justifyContent: "end", alignItems: "center" }}>
                         <Button className="control-button" onClick={moveShapeBackward} >
                             <div className="triangle-left"></div>
-                            <div className="move-text">{t("move_shape")}</div>
+                            <div className="move-text">{t("layout.move_shape")}</div>
                         </Button>
                     </Col>
                     <Col span={12} className="button-row" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
@@ -72,13 +72,13 @@ const PageLayout: React.FC = () => {
                                 <div className="triangle-down"></div>
                             </Row>
 
-                            <div className="move-text">{t("move_position")}</div>
+                            <div className="move-text">{t("layout.move_position")}</div>
                         </Button>
                     </Col>
                     <Col className='button-row' span={6} style={{ display: "flex", justifyContent: "start", alignItems: "center" }}>
                         <Button className="control-button" onClick={moveShapeForward}>
                             <div className="triangle-right"></div>
-                            <div className="move-text">{t("move_shape")}</div>
+                            <div className="move-text">{t("layout.move_shape")}</div>
                         </Button>
                     </Col>
                 </Row>
