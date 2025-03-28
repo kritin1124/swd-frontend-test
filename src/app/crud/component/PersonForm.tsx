@@ -1,7 +1,7 @@
 "use client";
-import { Form, Input, Button, Select, DatePicker, Radio, Row, Col } from "antd";
+import { Form, Input, Button, Select, DatePicker, Radio, Row, Col, Space } from "antd";
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
-import { addInfo, setSelectedPerson, updateInfo } from "../../feature/todo";
+import { addInfo, PersonalInfo, setSelectedPerson, updateInfo } from "../../feature/todo";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
 import { useEffect } from "react";
@@ -26,8 +26,12 @@ const PersonalInfoForm: React.FC = () => {
         }
     }, [selectedPerson]);
 
-    const onFinish = (values: any) => {
-        const updatedValues = { ...values, birthday: values.birthday.format("YYYY-MM-DD") };
+    const onFinish = (values: Pick<PersonalInfo, "title" | "firstName" | "lastName" | "birthday" | "nationality" | "citizenId" | "gender" | "mobilePhone" | "passportNo" | "expectedSalary">) => {
+        const updatedValues = {
+            ...values, birthday: dayjs.isDayjs(values.birthday)
+                ? values.birthday.format("YYYY-MM-DD") 
+                : values.birthday,
+        };
 
         if (selectedPerson) {
             dispatch(updateInfo({ ...selectedPerson, ...updatedValues }));
@@ -82,7 +86,7 @@ const PersonalInfoForm: React.FC = () => {
                         style={{ width: '35%' }}
                         rules={[{ required: true, message: "Please enter first name" }]}
                     >
-                        <Input />
+                        <Input id="firstName"/>
                     </Form.Item>
 
                     <Form.Item
@@ -91,7 +95,7 @@ const PersonalInfoForm: React.FC = () => {
                         style={{ width: '35%' }}
                         rules={[{ required: true, message: "Please enter last name" }]}
                     >
-                        <Input />
+                        <Input id="lastName"/>
                     </Form.Item>
                 </div>
 
@@ -102,6 +106,7 @@ const PersonalInfoForm: React.FC = () => {
                         rules={[{ required: true, message: "Please select birthday" }]}
                     >
                         <DatePicker
+
                             placeholder={t("crud.birthDate")}
                             format="MM/DD/YYYY"
                         />
@@ -122,7 +127,7 @@ const PersonalInfoForm: React.FC = () => {
                 </div>
 
                 <Form.Item label={t("crud.citizenId")} name="citizenId">
-                    <Input.Group compact>
+                    <Space.Compact>
                         <Input style={{ width: "10%" }} maxLength={1} />
                         <span style={{ padding: "0 5px" }}>-</span>
                         <Input style={{ width: "20%" }} maxLength={4} />
@@ -132,7 +137,7 @@ const PersonalInfoForm: React.FC = () => {
                         <Input style={{ width: "15%" }} maxLength={2} />
                         <span style={{ padding: "0 5px" }}>-</span>
                         <Input style={{ width: "10%" }} maxLength={1} />
-                    </Input.Group>
+                    </Space.Compact>
                 </Form.Item>
 
 
@@ -150,7 +155,7 @@ const PersonalInfoForm: React.FC = () => {
                 </Form.Item>
 
                 <Form.Item label={t("crud.mobilePhone")} name="mobilePhone" required={true}>
-                    <Input style={{ width: "60%" }} />
+                    <Input id = "mobilePhone" style={{ width: "60%" }} />
                 </Form.Item>
 
                 <Form.Item
@@ -158,7 +163,7 @@ const PersonalInfoForm: React.FC = () => {
                     name="passportNo"
                     style={{ width: '50%' }}
                 >
-                    <Input />
+                    <Input  id="passportNo"/>
                 </Form.Item>
 
                 <Row gutter={[16, 16]}>
@@ -166,7 +171,7 @@ const PersonalInfoForm: React.FC = () => {
                         <Form.Item
                             required={true}
                             label={t("crud.expectedSalary")} name="expectedSalary">
-                            <Input />
+                            <Input  id="expectedSalary"/>
                         </Form.Item>
                     </Col>
                     <Col span={8} offset={4}  >

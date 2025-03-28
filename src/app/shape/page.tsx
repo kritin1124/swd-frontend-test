@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Layout, Button, Card, Row, Col } from "antd";
+import {  Button, Card, Row, Col } from "antd";
 import { useTranslation } from "react-i18next";
 import "./page.css";
 

@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import dayjs from "dayjs";
 
-interface PersonalInfo {
+export interface PersonalInfo {
     id: string;
     title: string;
     firstName: string;
     lastName: string;
-    birthday: string;
+    birthday: dayjs.Dayjs | string;
     nationality: string;
     citizenId: string;
     gender: string;
@@ -14,7 +15,7 @@ interface PersonalInfo {
     expectedSalary: string;
 }
 
-interface FormState {
+export interface FormState {
     data: PersonalInfo[];
     selectedPerson: PersonalInfo | null;
     selectedRowKeys: React.Key[]; 

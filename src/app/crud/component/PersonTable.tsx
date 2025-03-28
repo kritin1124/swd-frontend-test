@@ -1,22 +1,22 @@
 "use client";
 import { Table, Button, Space, Checkbox } from "antd";
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
-import { deleteInfo, setSelectedPerson, setSelectedRowKeys } from "../../feature/todo";
-import { use, useEffect } from "react";
+import { deleteInfo, PersonalInfo, setSelectedPerson, setSelectedRowKeys } from "../../feature/todo";
+import {  useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 const PersonTable: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const persons = useAppSelector((state) => state.form.data);
-  const selectedRowKeys = useAppSelector((state) => state.form.selectedRowKeys);
+  const persons = useAppSelector((state) => state.form.data as PersonalInfo[]);
+  const selectedRowKeys = useAppSelector((state) => state.form.selectedRowKeys) as string[];
 
 
 
   const rowSelection = {
     selectedRowKeys,
     onChange: (keys: React.Key[]) => {
-      dispatch(setSelectedRowKeys(keys));
+      dispatch(setSelectedRowKeys(keys as string[]));
     },
   };
   const columns = [
@@ -24,7 +24,7 @@ const PersonTable: React.FC = () => {
       title: t("table.name"),
       dataIndex: "firstName",
       key: "name",
-      render: (_: any, record: any) => `${record.firstName} ${record.lastName}`
+      render: (_: unknown, record: PersonalInfo) => `${record.firstName} ${record.lastName}`
     },
     { title: t("table.gender"), dataIndex: "gender", key: "gender" },
     { title: t("table.mobilePhone"), dataIndex: "mobilePhone", key: "mobilePhone" },
@@ -32,21 +32,22 @@ const PersonTable: React.FC = () => {
     {
       title: t("table.manage"),
       key: "actions",
-      render: (_: any, record: any) => (
+      render: (_: unknown, record: PersonalInfo) => (
         <Space>
           <Button type="primary" onClick={() => dispatch(setSelectedPerson(record))}>EDIT</Button>
-          <Button danger onClick={() => dispatch(deleteInfo(record.id))}>DELETE</Button>
-        </Space>
+          <Button danger onClick={() => dispatch(deleteInfo([record.id]))}>DELETE</Button>
+          </Space>
       ),
     },
   ];
   const handleDeleteSelected = () => {
     if (selectedRowKeys.length > 0) {
-      dispatch(deleteInfo(selectedRowKeys));
+      dispatch(deleteInfo(selectedRowKeys as string[])); 
     } else {
       alert("Please select at least one person to delete");
     }
   };
+  
   useEffect(() => {
     dispatch(setSelectedRowKeys([]));
   }, [persons, dispatch]);
